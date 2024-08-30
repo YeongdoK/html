@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>스폰지밥 블로그 만들기</title>
+    <style>
+      * {
+        margin: 20;
+        padding: 10;
+        background-color: azure;
+        /* 내용물이 넘치면 보이지 않도록 */
+        overflow: hidden;
+        /* border: 1px solid red; */
+      }
+
+      header {
+        text-align: center;
+        width: 100%;
+        font-size: x-large;
+        padding: 18px;
+      }
+      nav {
+        margin: 0px;
+        padding: 0px;
+        background-color: skyblue;
+        display:flex;
+        justify-content : center;
+        overflow: hidden;
+      }
+      div {
+        border: 2px solid green;
+        /* text-align: center; */
+      }
+      a {
+        margin: 5px;
+        background-color: skyblue;
+        color: white;
+        font-weight: bold;
+      }
+      section {
+        /* float 속성 : display:inline으로 변경하고 오른쪽으로 붙임. */
+        float: right;
+        width: 80%;
+      }
+      aside {
+        float: left;
+        width: 15%;
+      }
+      footer {
+        /* float 속성을 right/left 다 지움. */
+        clear: both;
+        text-align: center;
+        background-color: gainsboro;
+      }
+    </style>
+  </head>
+  <body>
+    <header>네모바지 스폰지밥 - SpongeBob SquarePants</header>
+    <nav>
+      <a>About</a>
+      <a>History</a>
+      <a>Infomation</a>
+      <a>SNS</a>
+    </nav>
+    <main>
+      <aside>
+            <div>
+                <p style="font-weight: bold; margin: 20px;">SpongeBob SquarePants</p>
+                <img style="margin: 20px;" src="sponge.jpg" width="80%" alt="스폰지밥" />
+                <ul>
+                    <li>● 프로필</li>
+                    <li>● 특징</li>
+                    <li>● 대인관계</li>
+                    <li>● 어록</li>
+                </ul>
+            </div>
+      </aside>
+      <section>
+        <p>
+            SpongeBob SquarePants
+        </p>
+        <p>
+            수중도시 비키니시티의 인기 레스토랑 집게리아의 일등 종업원인 전속 요리사로 일한다. 부모님과 분가해서 살고 있으며, 반려동물 핑핑이와 파인애플 모양의 집에서 안락하게 살고 있다.
+            별명은 네모바지. 해양 생물인 해면(海綿)을 모티브로 한 캐릭터다. 이 생물이 영어로 Sponge(스펀지). 실제로 해면은 자르는건 물론이고 체로 걸러버려도 살아남는 생명력을 자랑한다. 
+            덕분에 극 중 능지처참을 당해도 멀쩡한건 기본이고, 치즈 가는 기계에 몸의 대부분이 갈려도 말을 할 정도인지라 사실상 불사신. 다만, 일부 몸이 잘리는 장면에서는 만화적 과장으로 척추가 드러난다. 
+            스펀지라 그런지 순식간에 주위의 물을 빨아들이거나 몸을 풍선처럼 만들 수도 있다. 본인 말로는 자기는 청소용 스펀지라고. 
+            또한 물과 산소만 있으면 먹이를 먹을 필요가 없지만 작중 다람이의 서바이벌 캠프에 따라가는 에피소드에서는 배가 고파서 뚱이를 먹으려 한다는 식으로 식욕은 존재하는 듯하다. 
+            그리고 특정 에피소드에서는 팔이나 다리 개수를 늘리기도 한다. 그래서 검은옷의 살인마 에피소드에선 팔을 팝콘처럼 먹기도 했다. 게다가 팔이 거의 뽑으면 동시에 생길 정도로 빨리 자란다.
+            때에 따라 작중 최고의 겁쟁이 캐릭터지만 에피소드에 따라 타격계 공격을 무시하는 패시브 스킬을 달고 나오는 경우가 있고, 부들부들 스폰지밥 에피소드에서는 네모난 머리를 둥글게 하기 위해 뇌가 드러날 정도로 피부를 깎고 나왔다. 
+            한마디로 그로테스크. 이 때 모든 사람은 물론이고 바다도깨비도 벌벌 떨면서 도망쳤다. 뚱이도 지가 깎아놓고 그냥 분홍모자인 줄 알았다가 경악. 그럼에도 한다는 소리가 "괜찮아! 머리는 다시 나잖아."
+        </p>
+        <p>
+            시리즈 별로 다르지면 보통 상당한 약골로 포현된다. 
+            솜인형 2개를 끼운 덤벨조차도 힘겹게 들어올리며 '찢어진 바지' 편에서는 막대기에 마쉬멜로우 2개를 끼운것 조차 들지못해서 바지가 찢어졌고 '울퉁불퉁 스폰지밥' 에피소드에선 유리컵에 손이 짓눌려서 꼼짝도 못하며 심지어 컵에 꽂힌 빨대조차도 움직이지 못한다. 
+            '겁쟁이 출입금지' 편에서는 케첩뚜껑을 못열어 사나이 클럽 문지기가 대신 열어줬다. 
+            다만 시즌 11의 야간 집게리아(The Night Patty)편에서는 약간 설정이 바뀌어서 팔근육이 강해진 나머지 악수를 한 요리사가 스폰지밥의 악력때문에 고통스러워 하기도 했다.
+            부모는 있지만, 같이 살지 않고 파인애플 집에 독립해서 살아가고 있다. 그래도 핑핑이라는 애완동물이 있고, 이웃주민으로 옆집에 뚱이와 징징이가 살고 있으니 외로움은 없는 듯 하다.
+            그래도 뒤집개를 쓰는 솜씨가 출중하고, 가라테를 한다거나 요리왕 올림픽에 나가는 걸 보면 선천적으로 약할 뿐이지 운동신경은 있는 것으로 보인다. 힘 자체는 굉장히 센 것에 비해 운동신경은 좀 뒤처지는 뚱이와는 정 반대.
+            작중 등장인물인 '인어맨과 조개소년'의 광팬. 프로그램은 늘 본방사수 하며, 관련 상품들도 빠짐없이 모은다.
+            집게리아에서 일을 할 때는 성실한 직원으로써의 모습을 보여주지만, 뚱이와 놀 때에는 비키니시티 제일가는 최악의 바보가 된다.
+            주변인물들은 이를 문서명과 동일한 '네모바지 스폰지밥'이 아닌 스폰지밥이라는 이름으로 부른다. 이건 팬들을 포함한 모든 사람들도 마찬가지.
+        </p>
+        <p>
+            참조: 나무위키 - 네모바지스폰지밥
+        </p>
+      </section>
+    </main>
+    <footer>
+      <p style="background-color: gainsboro;">Subscribe About Author Send us Email</p>
+    </footer>
+  </body>
+</html>
