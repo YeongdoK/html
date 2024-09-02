@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex로 시멘틱 태그만들기</title>
+
+    <style>
+        *{
+            text-align: center;
+            color: white;
+            margin: 0;
+        }
+
+        .container{
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            border: 1px solid black;
+        }
+
+        header {
+            background-color: violet;
+            padding: 10px;
+            border: 1px solid black;
+        }
+
+        nav {
+            background-color: greenyellow;
+            padding: 10px;
+            border: 1px solid black;
+        }
+
+        .scad {
+            display: flex;
+        }
+
+        section {
+            background-color: aqua;
+            flex: 75%;
+            padding: 80px;
+            border: 1px solid black;
+        }
+
+        aside {
+            background-color: orange;
+            flex: 25%;
+            padding: 80px;
+            border: 1px solid black;
+        }
+
+        footer {
+            background-color: khaki;
+            padding: 10px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>Header</header>
+        <nav>Nav</nav>
+        <div class="scad">
+            <section>Section</section>
+            <aside>Aside</aside>
+        </div>
+        <footer>Footer</footer>
+    </div>
+</body>
+</html>
