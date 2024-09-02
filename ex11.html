@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kakao Login Layout</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+        }
+
+        header {
+            margin-bottom: 30px;
+        }
+
+        header img {
+            width: 120px;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 400px;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
+        section {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .login-form input {
+            padding: 10px 0;
+            margin-bottom: 15px;
+            border: none;
+            border-bottom: 2px solid #ddd;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .options {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .options label {
+            font-size: 16px;
+            color: #555;
+            margin-left: 10px;
+        }
+
+        .options input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            appearance: none;
+            cursor: pointer;
+            background-image: url(./ico_comm.png);
+            background-size: 300px 300px;
+            background-position: 0px 0px;
+            margin: 0;
+            position: relative;
+        }
+
+        .options input[type="checkbox"]:checked {
+            background-image: url(./ico_comm.png);
+            background-size: 300px 300px;
+            background-position: -25px 1px;
+        }
+
+        .info-icon {
+            width: 18px;
+            height: 18px;
+            margin-left: 5px;
+            cursor: pointer;
+            background-image: url(./ico_comm.png);
+            background-size: 300px 300px;
+            background-position: -120px -110px;
+            display: inline-block;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .login-form button {
+            padding: 15px; 
+            background-color: #ffeb00;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .separator {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin: 15px 0;
+        }
+
+        .separator-line {
+            flex: 1;
+            height: 1px;
+            background-color: #D3D3D3;
+        }
+
+        .separator-text {
+            margin: 0 15px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        aside {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .alternative-login button {
+            width: 100%;
+            padding: 15px;
+            background-color: #eee;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .bottom-links {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #323232;
+        }
+
+        .left-links {
+            margin-left: 0;
+        }
+
+        .right-links {
+            display: flex;
+            align-items: center;
+            margin-right: 0;
+        }
+
+        .right-links a {
+            margin-left: 15px;
+        }
+
+        .divider {
+            width: 1px;
+            height: 16px;
+            background-color: #ddd;
+            margin: 0 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 400px;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #888;
+            margin: 0 8px;
+        }
+
+        .footer-links .bold {
+            font-weight: bold;
+        }
+
+        .footer-copyright {
+            text-align: center;
+            width: 100%;
+            color: #888;
+        }
+
+        .language-select {
+            border: none;
+            background: transparent;
+            font-size: 14px;
+            color: #888;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="./logo.png" alt="Kakao Logo">
+    </header>
+    <main>
+        <section class="login-form">
+            <input type="text" placeholder="카카오메일 아이디, 이메일, 전화번호">
+            <input type="password" placeholder="비밀번호">
+            <div class="options">
+                <input type="checkbox" id="remember">
+                <label for="remember">간편로그인 정보 저장</label>
+                <span class="info-icon" onclick="openModal()"></span>
+            </div>
+            <button type="submit">로그인</button>
+        </section>
+
+        <div class="separator">
+            <div class="separator-line"></div>
+            <span class="separator-text">또는</span>
+            <div class="separator-line"></div>
+        </div>
+
+        <aside class="alternative-login">
+            <button type="button">QR코드 로그인</button>
+        </aside>
+
+        <div class="bottom-links">
+            <div class="left-links">
+                <a href="#">회원가입</a>
+            </div>
+            <div class="right-links">
+                <a href="#">계정 찾기</a>
+                <div class="divider"></div>
+                <a href="#">비밀번호 찾기</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <select class="language-select" aria-label="언어 선택">
+                <option value="ko">한국어</option>
+                <option value="en">English</option>
+                <option value="jp">日本語</option>
+                <option value="zh">中文(简体)</option>
+            </select>
+            <a href="#">이용약관</a>
+            <a href="#" class="bold">개인정보 처리방침</a>
+            <a href="#">고객센터</a>
+        </div>
+        <div class="footer-copyright">
+            <span>© Kakao Corp.</span>
+        </div>
+    </footer>
+
+    <div class="modal" id="infoModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <p>로그인한 계정의 정보가 저장됩니다. 개인정보 보호를 위해 개인 기기에서만 사용해 주세요.</p>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('infoModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('infoModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
