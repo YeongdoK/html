@@ -26,7 +26,6 @@
           style="max-width: 1200px; border-radius: 20px"
         >
           <div class="row">
-            <!-- 입력폼 -->
             <form
               action="http://localhost:3030/login"
               method="post"
@@ -34,46 +33,49 @@
             >
               <div class="col-12">
                 <h1 class="my-5 text-center">Sign up</h1>
-                <div id="alert" class="alert alert-primary" role="alert">
-                  중복된 아이디가 있습니다.
-                </div>
+                <div id="alertContainer" class="mt-3"></div>
                 <div class="mb-3 d-flex flex-row">
                   <div
                     class="d-flex me-2 justify-content-center align-items-center"
                   >
                     <i class="fa-solid fa-user fa-xl"></i>
                   </div>
-                  <div style="width: 100%; display: flex; align-items: center;">
+                  <div style="width: 100%; display: flex; align-items: center">
                     <input
                       type="text"
                       class="form-control"
-                      id="inputName"
-                      name="inputName"
+                      id="name"
+                      name="name"
                       placeholder="Your Name"
-                      style="flex: 1; margin-right: 10px;"
+                      style="flex: 1; margin-right: 10px"
                     />
-                    <button style="display: inline;" type="submit" class="btn btn-primary">
-                        중복확인
+                    <button
+                      style="display: inline"
+                      type="button"
+                      class="btn btn-primary"
+                      id="duplicateCheckButton"
+                    >
+                      중복확인
                     </button>
                   </div>
                 </div>
 
                 <div class="mb-3 d-flex flex-row">
-                    <div
-                      class="d-flex me-2 justify-content-center align-items-center"
-                    >
-                      <i class="fa-solid fa-envelope fa-xl"></i>
-                    </div>
-                    <div style="width: 100%">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="inputEmail"
-                        name="inputEmail"
-                        placeholder="Your Email"
-                      />
-                    </div>
+                  <div
+                    class="d-flex me-2 justify-content-center align-items-center"
+                  >
+                    <i class="fa-solid fa-envelope fa-xl"></i>
                   </div>
+                  <div style="width: 100%">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="email"
+                      name="email"
+                      placeholder="Your Email"
+                    />
+                  </div>
+                </div>
 
                 <div class="mb-3 d-flex flex-row">
                   <div
@@ -85,7 +87,7 @@
                     <input
                       type="text"
                       class="form-control"
-                      id="inputPw"
+                      id="password"
                       name="inputPw"
                       placeholder="Your Password"
                     />
@@ -93,36 +95,42 @@
                 </div>
 
                 <div class="mb-3 d-flex flex-row">
-                    <div
-                      class="d-flex me-2 justify-content-center align-items-center"
-                    >
-                      <i class="fa-solid fa-key fa-xl"></i>
-                    </div>
-                    <div style="width: 100%">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="inputRePw"
-                        name="inputRePw"
-                        placeholder="Repeat your Password"
-                      />
-                    </div>
+                  <div
+                    class="d-flex me-2 justify-content-center align-items-center"
+                  >
+                    <i class="fa-solid fa-key fa-xl"></i>
+                  </div>
+                  <div style="width: 100%">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="confirmPassword"
+                      name="inputRePw"
+                      placeholder="Repeat your Password"
+                    />
+                  </div>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                      I agree all statement 
-                    </label>
-                    <a href="" style="text-decoration-line: none;">Terms of service</a>
-                  </div>
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    I agree all statement
+                  </label>
+                  <a href="" style="text-decoration-line: none"
+                    >Terms of service</a
+                  >
+                </div>
 
-                <!-- 버튼들 -->
                 <div
                   class="mb-3 d-flex flex-row justify-content-center align-items-center gap-5"
                 >
                   <div class="text-center my-5">
-                    <button type="submit" class="btn btn-secondary">
+                    <button type="button" class="btn btn-secondary">
                       뒤로가기
                     </button>
                   </div>
@@ -130,7 +138,7 @@
                     <button
                       type="button"
                       class="btn btn-primary"
-                      onclick="join_form();"
+                      id="signupButton"
                     >
                       회원가입
                     </button>
@@ -143,9 +151,60 @@
       </div>
     </div>
     <script>
-      function join_form() {
-        // "localhost:3030/joinForm"
-        window.location.href = "./join.html";
+      let isDuplicateChecked = false;
+
+      document
+        .getElementById("duplicateCheckButton")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          isDuplicateChecked = true;
+          showAlert("중복된 아이디가 있습니다.", "primary");
+        });
+
+      document
+        .getElementById("signupButton")
+        .addEventListener("click", function () {
+          const name = document.getElementById("name").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const password = document.getElementById("password").value.trim();
+          const confirmPassword = document
+            .getElementById("confirmPassword")
+            .value.trim();
+          const termsChecked = document.getElementById("flexCheckDefault").checked;
+
+          if (!isDuplicateChecked) {
+            showAlert("중복확인이 되어 있지 않습니다.", "danger");
+            return;
+          }
+
+          if (password !== confirmPassword) {
+            showAlert("암호가 서로 다릅니다.", "danger");
+            return;
+          }
+
+          if (!name || !email || !password) {
+            showAlert("입력되지 않는 항목이 있습니다.", "danger");
+            return;
+          }
+
+          if (!termsChecked) {
+            showAlert("약관동의에 체크해 주세요.", "danger");
+            return;
+          }
+
+          showAlert("회원가입이 완료되었습니다!", "success");
+
+          document.formLogin.submit();
+        });
+
+      function showAlert(message, type) {
+        const alertContainer = document.getElementById("alertContainer");
+        alertContainer.innerHTML = `
+          <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+              ${message}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+      `;
       }
     </script>
 
